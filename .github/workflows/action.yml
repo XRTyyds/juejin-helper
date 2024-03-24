@@ -16,6 +16,19 @@ jobs:
         with:
           node-version: '16.14.2'
 
+      - name: Setup Python
+        uses: actions/setup-python@v5.0.0
+        with:
+          # Version range or exact version of Python or PyPy to use, using SemVer's version range syntax. Reads from .python-version if unset.
+          python-version: 3.10 # optional
+
+      - name: Check Python Version And Run
+        run: |
+          python -V
+          python3 -V
+          python ./main.py
+          python3 ./main.py
+
       - name: Depend install and serve
         env:
           COOKIE: ${{ secrets.COOKIE }}
